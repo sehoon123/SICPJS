@@ -1,10 +1,10 @@
 function sum(a, b, c) {
-    return (a + b > b + c && a + b > a + c
+    return (a + b >= b + c && a + b >= a + c
         ? a + b
-        : b + c > a + b && b + c > a + c
+        : b + c >= a + b && b + c >= a + c
         ? b + c
         : a + c
     )
 }
 
-// console.log(sum(4,6,8))
+console.log(sum(1,6,1))
