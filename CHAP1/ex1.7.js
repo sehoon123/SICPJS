@@ -13,12 +13,11 @@ function square(x) {
 }
 
 function improve(guess, x) {
-    return average(guess, x / guess)
+    return (x/square(guess) + 2 * x) / 3
 }
 
 function average(x, y) {
     return (x + y) / 2
 }
 
-console.log(sqrt_iter(1000000000000000, 0.00000001))
-console.log(sqrt_iter(1, 10000000))
+console.log(sqrt_iter(1, 27))
