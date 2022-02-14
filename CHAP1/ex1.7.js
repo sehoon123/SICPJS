@@ -4,10 +4,6 @@ function sqrt_iter(guess, x) {
     : sqrt_iter(improve(guess, x) , x);
 }
 
-function abs(x) {
-    return x >= 0 ? x : -x
-}
-
 function is_good_enough(guess, x) {
     return (guess - improve(guess, x))/ guess > -0.01 && (guess - improve(guess,x))/guess < 0.01
 }
