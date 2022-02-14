@@ -1,7 +1,7 @@
-function sqrt_iter(guess, x) {
+function cbrt_iter(guess, x) {
     return is_good_enough(guess, x)
     ? guess
-    : sqrt_iter(improve(guess, x) , x);
+    : cbrt_iter(improve(guess, x) , x);
 }
 
 function is_good_enough(guess, x) {
@@ -17,7 +17,11 @@ function improve(guess, x) {
 }
 
 function average(x, y) {
-    return (x + y) / 2
+    return (x + y) / 2;
 }
 
-console.log(sqrt_iter(1, 27))
+function cbrt(x) {
+    return cbrt_iter(1, x);
+}
+
+console.log(cbrt(27))
