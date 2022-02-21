@@ -29,4 +29,4 @@ console.log(sine(12.15))
 //0.05
 //
 //Q2
-//O(log(3) a)
+//O(log a)
