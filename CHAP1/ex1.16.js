@@ -10,4 +10,4 @@ function exp(b, n) {
     return exp_iter(1, b, n)
 }
 
-console.log(exp(3,4))
+console.log(exp(3,3))
