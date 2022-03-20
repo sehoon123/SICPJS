@@ -42,10 +42,10 @@ function miller_rabin_test(n) {
 
 function test(n, times) {
     return times === 0
-    ? true
-    : miller_rabin_test(n)
-    ? test(n, times-1)
-    : false;
+        ? true
+        : miller_rabin_test(n)
+        ? test(n, times-1)
+        : false;
 }
 
 console.log(test(13,3))
