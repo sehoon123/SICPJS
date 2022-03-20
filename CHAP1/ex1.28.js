@@ -17,36 +17,62 @@ function expmod(a, x, mod) {
         : (a * expmod(a, x-1, mod)) % mod
 }
 
-function miller_rabin_test(n) {
-    if (n === 2) {
-        return true;
-    }
-    var k = n-1;
-    a = (1 + Math.floor(Math.random() * (n-1)));
-    // a = 13
-    // console.log(a)
-    while (k% 2 === 0) {
-        k = k / 2;
-        // console.log(k)
-        if ((expmod(a, k, n) + 1) % n === 0) {
-            return true;
-        }
-        if (k%2 === 1) {
-            if ((expmod(a,k,n) - 1) % n === 0) {
-                return true;
-            }
-        }
-    }
-    return false;
+function miller_rabin_test(a, n, k) {
+    k = k / 2
+    console.log(k)
+    return n === 2
+        ? true
+        : n % 2 === 0
+        ? false
+        : k % 2 === 1
+        ? (expmod(a, k, n) -1) % n === 0 || (expmod(a, k, n) +1) % n === 0
+        : (expmod(a, k, n) +1) % n === 0
+        ? true
+        : miller_rabin_test(a, n, k)
 }
 
 function test(n, times) {
+    a = (1 + Math.floor(Math.random() * (n-1)));
+    console.log("a = " ,a)
     return times === 0
         ? true
-        : miller_rabin_test(n)
+        : miller_rabin_test(a,n,n-1)
         ? test(n, times-1)
         : false;
 }
 
-console.log(test(13,3))
+console.log(test(17,3))
+
+// function miller_rabin_test(n) {
+//     if (n === 2) {
+//         return true;
+//     }
+//     var k = n-1;
+//     a = (1 + Math.floor(Math.random() * (n-1)));
+//     // a = 13
+//     // console.log(a)
+//     while (k% 2 === 0) {
+//         k = k / 2;
+//         // console.log(k)
+//         if ((expmod(a, k, n) + 1) % n === 0) {
+//             return true;
+//         }
+//         if (k%2 === 1) {
+//             if ((expmod(a,k,n) - 1) % n === 0) {
+//                 return true;
+//             }
+//         }
+//     }
+//     return false;
+// }
+
+// function test(n, times) {
+//     return times === 0
+//         ? true
+//         : miller_rabin_test(n)
+//         ? test(n, times-1)
+//         : false;
+// }
+
+// console.log(test(15,3))
 
